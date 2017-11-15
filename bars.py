@@ -8,33 +8,34 @@ def load_data(filepath):
         return json.load(init_file)
 
 
-def get_biggest_bar(data):
+def get_biggest_bar(bars_data_dict):
     max_bar = max([bar['properties']['Attributes']['SeatsCount']
-         for bar in data['features']])
+         for bar in bars_data_dict['features']])
     max_bar_name = ''
-    for bar in data['features']:
+    for bar in bars_data_dict['features']:
         if bar['properties']['Attributes']['SeatsCount'] == max_bar:
             max_bar_name = bar['properties']['Attributes']['Name']
     return max_bar_name
 
-def get_smallest_bar(data):
+def get_smallest_bar(bars_data_dict):
     min_bar = min([bar['properties']['Attributes']['SeatsCount']
-                   for bar in data['features']])
+                   for bar in bars_data_dict['features']])
     min_bar_name = ''
-    for bar in data['features']:
+    for bar in bars_data_dict['features']:
         if bar['properties']['Attributes']['SeatsCount'] == min_bar:
             min_bar_name = bar['properties']['Attributes']['Name']
     return min_bar_name
 
+def get_dist_to_bar(usr_long, usr_lat, bar_long, bar_lat):
+    return sqrt((usr_long - bar_long)**2 + (usr_lat - bar_lat)**2)
 
-def get_closest_bar(data, longitude, latitude):
-    get_dist_to_bar = lambda usr_long, usr_lat, bar_long, bar_lat: \
-        sqrt((usr_long - bar_long)**2 + (usr_lat - bar_lat)**2)
+
+def get_closest_bar(bars_data_dict, user_longitude, user_latitude):
     min_dist_to_bar = 2000000000.0
     closest_bar_name = ''
-    for bar in data['features']:
+    for bar in bars_data_dict['features']:
         bar_longitude, bar_latitude = bar['geometry']['coordinates']
-        dist_to_bar = get_dist_to_bar(longitude, latitude,
+        dist_to_bar = get_dist_to_bar(user_longitude, user_latitude,
                                           bar_longitude, bar_latitude)
         if dist_to_bar < min_dist_to_bar:
             min_dist_to_bar = dist_to_bar
