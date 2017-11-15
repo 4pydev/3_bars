@@ -17,6 +17,7 @@ def get_biggest_bar(bars_data_dict):
             max_bar_name = bar['properties']['Attributes']['Name']
     return max_bar_name
 
+
 def get_smallest_bar(bars_data_dict):
     min_bar = min([bar['properties']['Attributes']['SeatsCount']
                    for bar in bars_data_dict['features']])
@@ -25,6 +26,7 @@ def get_smallest_bar(bars_data_dict):
         if bar['properties']['Attributes']['SeatsCount'] == min_bar:
             min_bar_name = bar['properties']['Attributes']['Name']
     return min_bar_name
+
 
 def get_dist_to_bar(usr_long, usr_lat, bar_long, bar_lat):
     return sqrt((usr_long - bar_long)**2 + (usr_lat - bar_lat)**2)
@@ -41,8 +43,6 @@ def get_closest_bar(bars_data_dict, user_longitude, user_latitude):
             min_dist_to_bar = dist_to_bar
             closest_bar_name = bar['properties']['Attributes']['Name']
     return closest_bar_name
-
-
 
 
 if __name__ == '__main__':
