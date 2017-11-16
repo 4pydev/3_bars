@@ -9,19 +9,19 @@ def load_data(filepath):
 
 
 def get_biggest_bar(bars_list):
-    return (max(bars_list, key=lambda bar:
-               bar['properties']['Attributes']['SeatsCount']), 'biggest')
+    return max(bars_list, key=lambda bar:
+               bar['properties']['Attributes']['SeatsCount']), 'biggest'
 
 
 def get_smallest_bar(bars_list):
-    return (min(bars_list, key=lambda bar:
-               bar['properties']['Attributes']['SeatsCount']), 'smallest')
+    return min(bars_list, key=lambda bar:
+               bar['properties']['Attributes']['SeatsCount']), 'smallest'
 
 
 def get_closest_bar(bars_list, usr_lat, usr_lon):
-    return (min(bars_list, key=lambda bar: sqrt(
+    return min(bars_list, key=lambda bar: sqrt(
                (usr_lat-bar['geometry']['coordinates'][0])**2) +
-               (usr_lon-bar['geometry']['coordinates'][1])**2), 'closest')
+               (usr_lon-bar['geometry']['coordinates'][1])**2), 'closest'
 
 
 def print_bar_info(bar):
@@ -41,7 +41,6 @@ if __name__ == '__main__':
 
         smallest_bar = get_smallest_bar(bars_list)
         print_bar_info(smallest_bar)
-
 
         print("------------------------------------------------")
 
