@@ -18,12 +18,18 @@
 
 $ python bars.py <path_to_your_json_file> # possibly requires call of python3 executive instead of just python
 # Пример ответа скрипта
-The biggest bar is: Спорт бар «Красная машина»
-The smallest bar is: Бар в Деловом центре Яуза
---------------------------------------
-Enter your longitude: 12
-Enter your latitude: 12
-Staropramen is closest bar to you.
+The biggest bar is 
+        Name: Спорт бар «Красная машина» 
+        Address: Автозаводская улица, дом 23, строение 1
+The smallest bar is 
+        Name: БАР. СОКИ 
+        Address: Дубравная улица, дом 34/29
+------------------------------------------------
+Enter your latitude: 34
+Enter your longitude: 56
+The closest bar is 
+        Name: Бар «ДЖАНГО» 
+        Address: город Зеленоград, корпус 1456
 
 ```
 
